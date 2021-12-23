@@ -1,12 +1,14 @@
 # ROSPlan docker image
-FROM ros:melodic
+# FROM ros:melodic
+FROM ros:noetic
 
 SHELL ["/bin/bash", "-c"]
 WORKDIR /root/ws
 
 
 # install dependencies
-RUN apt update -qq && apt install python-catkin-tools git vim bash-completion -y -qq
+# RUN apt update -qq && apt install python-catkin-tools git vim bash-completion -y -qq
+RUN apt update -qq && apt install python3-catkin-tools python3-osrf-pycommon git vim bash-completion -y -qq
 
 # Create WS
 RUN source /opt/ros/$ROS_DISTRO/setup.bash &&\
@@ -35,4 +37,5 @@ RUN catkin build --summarize --no-status
 
 # Prepare workspace for runtime. Set the prompt to be colored
 RUN echo -e "source /opt/ros/$ROS_DISTRO/setup.bash\nsource devel/setup.bash" >> ~/.bashrc &&\
+    #sed -i s/^#force_color_prompt/force_color_prompt/g ~/.bashrc
     sed -i s/^#force_color_prompt/force_color_prompt/g ~/.bashrc
