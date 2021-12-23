@@ -32,7 +32,7 @@ cd ROSPlan/
 Get the code:
 ```sh
 cd src/
-git clone https://github.com/KCL-Planning/rosplan
+git clone https://github.com/okdhryk/rosplan
 ```
 
 Compile everything:
